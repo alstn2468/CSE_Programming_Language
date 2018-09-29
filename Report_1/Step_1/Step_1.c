@@ -10,7 +10,7 @@ typedef struct
 inline double dot(double *a, double *b, int len, int step)
 {
 	double r = 0;
-    
+
 	while (len--)
     {
 		r += *a++ * *b;
@@ -71,7 +71,7 @@ int main()
 			          3.0/2,   -2.0,  7.0/6,
 			         -1.0/6,  1.0/4, -1.0/6 };
 
-	matrix_t a = { 4, 4, da }
+	matrix_t a = { 4, 4, da };
     matrix_t b = { 4, 3, db };
 
 	matrix c = mat_mul(&a, &b);
