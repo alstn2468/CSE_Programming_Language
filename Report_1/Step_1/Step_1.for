@@ -1,25 +1,35 @@
-real, dimension(n,m) :: a = reshape( [ (i, i=1, n*m) ], [ n, m ] )
-real, dimension(m,k) :: b = reshape( [ (i, i=1, m*k) ], [ m, k ] )
-real, dimension(size(a,1), size(b,2)) :: c    ! C is an array whose first dimension (row) size
-                                              ! is the same as A's first dimension size, and
-                                              ! whose second dimension (column) size is the same
-                                              ! as B's second dimension size.
+module mult
+contains
+    subroutine matrixmul(first, second, multiply, status)
+        implicit none
+        real (kind = 8), intent(in) :: first(:,:)
+        real (kind = 8), intent(in) :: second(: ,:)
+        real (kind = 8), intent(out) :: multiply(:,:)
+        integer (kind = 4), intent(out) :: status
+        integer (kind = 4) :: i, j, k, firstSize(2), secondSize(2)
+        real (kind = 8) :: sum
 
-c = matmul( a, b )
+        firstSize(2) = size(first(1,:))
+        firstSize(1) = size(first(:,1))
+        secondSize(2) = size(second(1,:))
+        secondSize(1) = size(second(:,1))
 
-print *, 'A'
-do i = 1, n
-    print *, a(i,:)
-end do
+        multiply = 0
 
-print *,
-print *, 'B'
-do i = 1, m
-    print *, b(i,:)
-end do
+        if (firstSize(2) .ne. secondSize(1)) then
+            status = 1
+        else
+            do i = 1, firstSize(1)
+                do j = 1, secondSize(2)
+                    sum = 0
+                    do k = 1, firstSize(2)
+                        sum = sum + first(i,k) * second(k,j)
+                    end do
+                    multiply(i, j) = sum
+                end do
+            end do
+            status = 0
+        end if
+    end subroutine
 
-print *,
-print *, 'C = AB'
-do i = 1, n
-    print *, c(i,:)
-end do
+end module
