@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 public static double[][] mult(double a[][], double b[][]) {
         if(a.length == 0) return new double[0][0];
         if(a[0].length != b.length) return null;
@@ -17,7 +17,7 @@ public static double[][] mult(double a[][], double b[][]) {
                 }
         }
         return ans;
-=======
+
 public class MatrixMultiplier {
     public static int[][] A = {{1, 2, 3},
                                {4, 5, 6},
@@ -54,7 +54,7 @@ public class MatrixMultiplier {
 
             System.out.println("");
         }
-        
+
     }
 }
 
@@ -83,5 +83,5 @@ class WorkerThread implements Runnable
 
         C[row][col] = total;
     }
->>>>>>> c5f6646942146c40845d0dfd7b6639804a2462c2
+
 }
