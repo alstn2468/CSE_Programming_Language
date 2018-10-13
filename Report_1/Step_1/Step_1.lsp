@@ -1,7 +1,7 @@
-(setq fmrow 500) (setq fmcol 250) (setq smrow 250) (setq smcol 500)
-(defparameter fm (make-array '(500 250) :initial-element 0))
-(defparameter sm (make-array '(250 500) :initial-element 0))
-(defparameter res (make-array '(2500 500) :initial-element 0))
+(setq fmrow 1000) (setq fmcol 1000) (setq smrow 1000) (setq smcol 1000)
+(defparameter fm (make-array '(1000 1000) :initial-element 0))
+(defparameter sm (make-array '(1000 1000) :initial-element 0))
+(defparameter res (make-array '(1000 1000) :initial-element 0))
 (setq ffile (open "Data01.txt"))
 (setq sfile (open "Data02.txt"))
 

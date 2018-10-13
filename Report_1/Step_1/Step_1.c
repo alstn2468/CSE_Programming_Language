@@ -3,10 +3,10 @@
 #include <time.h>
 #include <conio.h>
 
-#define FMROW 500
-#define FMCOL 250
-#define SMROW 250
-#define SMCOL 500
+#define FMROW 1000
+#define FMCOL 1000
+#define SMROW 1000
+#define SMCOL 1000
 
 void main()
 {

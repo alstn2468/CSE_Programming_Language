@@ -18,32 +18,32 @@ FILE SECTION.
 
 FD FIRST-MATRIX.
 01 ELEMENT1.
-05 F-ROW                  OCCURS 500 TIMES.
+05 F-ROW                  OCCURS 1000 TIMES.
   10 F-COL               PIC 99
-                 OCCURS 250 TIMES.
+                 OCCURS 1000 TIMES.
 
 FD SECOND-MATRIX.
 01 ELEMENT2.
-05 S-ROW             OCCURS 250 TIMES.
+05 S-ROW             OCCURS 1000 TIMES.
 10 S-COL             PIC 99
-                 OCCURS 2500 TIMES.
+                 OCCURS 1000 TIMES.
 
 WORKING-STORAGE SECTION.
 
 01 F-MATRIX.
-05 F1-ROW                 OCCURS 500 TIMES.
+05 F1-ROW                 OCCURS 1000 TIMES.
 10 F1-COL         PIC 99
-             OCCURS 250 TIMES.
+             OCCURS 1000 TIMES.
 
 01 S-MATRIX.
-05 S1-ROW         OCCURS 250 TIMES.
-10 S1-COL         OCCURS 500 TIMES
+05 S1-ROW         OCCURS 1000 TIMES.
+10 S1-COL         OCCURS 1000 TIMES
                               PIC 99.
 
 01 RESULT-MATRIX.
-05 R-ROW         OCCURS 500 TIMES.
+05 R-ROW         OCCURS 1000 TIMES.
 10 R-COL         PIC 99
-         OCCURS 2500 TIMES.
+         OCCURS 1000 TIMES.
 
 01 FIRST-MATRIX-SWITCHES.
 05 EOF-F-SWITCH     PIC X
@@ -54,16 +54,16 @@ WORKING-STORAGE SECTION.
              VALUE "N".
 
 01 FIRST-MATRIX-ROW     PIC 9999
-             VALUE 500.
+             VALUE 1000.
 
 01 FIRST-MATRIX-COL     PIC 999
-             VALUE 250.
+             VALUE 1000.
 
 01 SECOND-MATRIX-ROW         PIC 999
-             VALUE 250.
+             VALUE 1000.
 
 01 SECOND-MATRIX-COL     PIC 9999
-             VALUE 500.
+             VALUE 1000.
 
 01 I                          PIC 9999.
 01 J                          PIC 9999.

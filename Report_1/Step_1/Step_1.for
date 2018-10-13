@@ -1,15 +1,15 @@
 Program main
 Integer i, j, k, fmrow, fmcol, smrow, smcol
-Integer, Dimension(2500, 250) :: fm
-Integer, Dimension(250, 2500) :: sm
-Integer, Dimension(2500, 2500) :: res
+Integer, Dimension(1000, 1000) :: fm
+Integer, Dimension(1000, 1000) :: sm
+Integer, Dimension(1000, 1000) :: res
 Character anykey
 REAL T1, T2
 
-fmrow = 500
-fmcol = 250
-smrow = 250
-smcol = 500
+fmrow = 1000
+fmcol = 1000
+smrow = 1000
+smcol = 1000
 
 Open(10, file = 'Data01.txt', status='old')
 Print *, 'Reading Data01.txt'
