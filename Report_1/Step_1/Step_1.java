@@ -1,58 +1,60 @@
-import java.util.Scanner;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class MatrixMul {
+	static int FMROW = 1000, FMCOL = 1000;
+	static int SMROW = 1000, SMCOL = 1000;
 
    public static void main(String[] args) {
-       Scanner s = new Scanner(System.in);
+       int[][] fm = new int[FMROW][FMCOL];
+       int[][] sm = new int[SMROW][SMCOL];
+       int[][] result;
 
-       System.out.print("A의 열을 입력하세요 >> ");
-       int rowsInA = s.nextInt();
+       try {
 
-       System.out.print("A의 행과 B의 열을 입력하세요 >> ");
-       int columnsInA = s.nextInt();
+           File file = new File("./Data01.txt");
+           FileReader filereader = new FileReader(file);
 
-       System.out.print("B의 행을 입력하세요 >> ");
-       int columnsInB = s.nextInt();1
-
-       int[][] a = new int[rowsInA][columnsInA];
-       int[][] b = new int[columnsInA][columnsInB];
-
-       System.out.println("A 매트릭스를 입력하세요 " + columnsInA + " by " + rowsInA);
-       for (int i = 0; i < a.length; i++) {
-           for (int j = 0; j < a[0].length; j++) {
-               a[i][j] = s.nextInt();
+           for (int i = 0; i < FMCOL; i++) {
+               for (int j = 0; j < FMROW; j++)
+            	   fm[i][j] = filereader.read();
            }
-       }
 
-       System.out.println("B 매트릭스를 입력하세요 " + columnsInB + " by " + columnsInA);
+           filereader.close();
 
-       for (int i = 0; i < b.length; i++) {
-           for (int j = 0; j < b[0].length; j++) {
-               b[i][j] = s.nextInt();
+           file = new File("./Data02.txt");
+           filereader = new FileReader(file);
+
+           for (int i = 0; i < SMCOL; i++) {
+               for (int j = 0; j < SMROW; j++)
+            	  sm[i][j] = filereader.read();
            }
+
+           filereader.close();
+
+           long startTime = System.currentTimeMillis();
+
+           result = multiply(fm, sm);
+
+           long endTime = System.currentTimeMillis();
+
+           long lTime = endTime - startTime;
+           System.out.println("TIME : " + lTime + "(ms)");
+
+       } catch (IOException e) {
+
+    	   System.out.println(e);
+
        }
-
-       int[][] c = multiply(a, b);
-
-       System.out.println("A행렬과 B행렬의 곱셈 결과");
-       for (int i = 0; i < c.length; i++) {
-           for (int j = 0; j < c[0].length; j++) {
-               System.out.print(c[i][j] + " ");
-           }
-           System.out.println();
-       }
-
    }
 
    public static int[][] multiply(int[][] a, int[][] b) {
-       int rowsInA = a.length;
-       int columnsInA = a[0].length;
-       int columnsInB = b[0].length;
-       int[][] c = new int[rowsInA][columnsInB];
+       int[][] c = new int[FMROW][SMCOL];
 
-       for (int i = 0; i < rowsInA; i++) {
-           for (int j = 0; j < columnsInB; j++) {
-               for (int k = 0; k < columnsInA; k++) {
+       for (int i = 0; i < FMROW; i++) {
+           for (int j = 0; j < SMCOL; j++) {
+               for (int k = 0; k < FMCOL; k++) {
                    c[i][j] = c[i][j] + a[i][k] * b[k][j];
                }
            }
