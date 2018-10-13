@@ -1,87 +1,63 @@
+import java.util.Scanner;
 
-public static double[][] mult(double a[][], double b[][]) {
-        if(a.length == 0) return new double[0][0];
-        if(a[0].length != b.length) return null;
+public class MatrixMul {
 
-        int n = a[0].length;
-        int m = a.length;
-        int p = b[0].length;
+   public static void main(String[] args) {
+       Scanner s = new Scanner(System.in);
 
-        double ans[][] = new double[m][p];
+       System.out.print("A의 열을 입력하세요 >> ");
+       int rowsInA = s.nextInt();
 
-        for(int i = 0; i < m; i++) {
-                for(int j = 0; j < p; j++) {
-                        for(int k = 0; k < n; k++) {
-                                ans[i][j] += a[i][k] * b[k][j];
-                        }
-                }
-        }
-        return ans;
+       System.out.print("A의 행과 B의 열을 입력하세요 >> ");
+       int columnsInA = s.nextInt();
 
-public class MatrixMultiplier {
-    public static int[][] A = {{1, 2, 3},
-                               {4, 5, 6},
-                               {7, 8, 9}};
-    public static int[][] B = {{1, 2, 3, 4, 5},
-                               {6, 7, 8, 9, 10},
-                               {11, 12, 13, 14, 15}};
-    public static int[][] C = new int[A.length][B[0].length];
+       System.out.print("B의 행을 입력하세요 >> ");
+       int columnsInB = s.nextInt();1
 
-    public static void main(String[] args) {
-        int count = 0;
+       int[][] a = new int[rowsInA][columnsInA];
+       int[][] b = new int[columnsInA][columnsInB];
 
-        for(int x = 0; x < A.length; x++) {
+       System.out.println("A 매트릭스를 입력하세요 " + columnsInA + " by " + rowsInA);
+       for (int i = 0; i < a.length; i++) {
+           for (int j = 0; j < a[0].length; j++) {
+               a[i][j] = s.nextInt();
+           }
+       }
 
-            for(int y = 0; y < B[0].length; y++) {
-                count++;
-                String threads = "thread".concat(Integer.toString(count));
-                Thread thread = new Thread(new WorkerThread(x, y, A, B, C), threads);
+       System.out.println("B 매트릭스를 입력하세요 " + columnsInB + " by " + columnsInA);
 
-                thread.start();
-                try {
-                    thread.join();
-                } catch (InterruptedException ex) {}
+       for (int i = 0; i < b.length; i++) {
+           for (int j = 0; j < b[0].length; j++) {
+               b[i][j] = s.nextInt();
+           }
+       }
 
-            }
+       int[][] c = multiply(a, b);
 
-        }
+       System.out.println("A행렬과 B행렬의 곱셈 결과");
+       for (int i = 0; i < c.length; i++) {
+           for (int j = 0; j < c[0].length; j++) {
+               System.out.print(c[i][j] + " ");
+           }
+           System.out.println();
+       }
 
-        for(int x = 0; x < A.length; x++) {
+   }
 
-            for(int y = 0; y < B[0].length; y++) {
-                System.out.printf("%5d"+"\t",C[x][y]);
-            }
+   public static int[][] multiply(int[][] a, int[][] b) {
+       int rowsInA = a.length;
+       int columnsInA = a[0].length;
+       int columnsInB = b[0].length;
+       int[][] c = new int[rowsInA][columnsInB];
 
-            System.out.println("");
-        }
+       for (int i = 0; i < rowsInA; i++) {
+           for (int j = 0; j < columnsInB; j++) {
+               for (int k = 0; k < columnsInA; k++) {
+                   c[i][j] = c[i][j] + a[i][k] * b[k][j];
+               }
+           }
+       }
 
-    }
-}
-
-class WorkerThread implements Runnable
-{
-    private int row;
-    private int col;
-    private int[][] A;
-    private int[][] B;
-    private int[][] C;
-
-    public WorkerThread(int row, int col, int [][] A, int [][] B, int [][] C) {
-        this.row = row;
-        this.col = col;
-        this.A = A;
-        this.B = B;
-        this.C = C;
-    }
-
-    public void run() {
-        int total = 0;
-
-        for(int y = 0; y < (A[row].length); y++) {
-            total += A[row][y] * B[y][col];
-        }
-
-        C[row][col] = total;
-    }
-
+       return c;
+   }
 }

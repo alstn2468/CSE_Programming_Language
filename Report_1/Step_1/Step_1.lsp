@@ -1,34 +1,37 @@
-;matrix multiplication
-;two inputs of the mxn nxm
-;as list of lists
-;using apply and mapcar
+(setq fmrow 500) (setq fmcol 250) (setq smrow 250) (setq smcol 500)
+(defparameter fm (make-array '(500 250) :initial-element 0))
+(defparameter sm (make-array '(250 500) :initial-element 0))
+(defparameter res (make-array '(2500 500) :initial-element 0))
+(setq ffile (open "Data01.txt"))
+(setq sfile (open "Data02.txt"))
 
-(defun gets(x lst)
-    ( if (= x 0) (car lst)
-         (gets (- x 1) (cdr lst) )
-     )
+(write-line "Reading Data01.txt")
+( dotimes(i fmrow)
+   ( dotimes (j fmcol)
+      ( setf (aref fm i j) (parse-integer (read-line ffile)) )
+   )
 )
 
-(defun getrow(x matrix)
-    (gets x matrix)
- )
+(close ffile)
 
-(defun getcol(x matrix)
-    (if (null matrix) nil
-     (append (list (gets x (car matrix) )) (getcol x (cdr matrix) ))
+(write-line "Reading Data02.txt")
+( dotimes(i smrow)
+   ( dotimes (j smcol)
+       ( setf (aref sm i j) (parse-integer (read-line sfile)) )
+    )
+)
+(close sfile)
+
+(write-line "Calculating fm * sm... (loop i->j->k)")
+(setf start (get-universal-time))
+
+( dotimes(i fmrow)
+    ( dotimes (j smcol)
+        ( dotimes (k fmcol)
+            ( setf (aref res i j) (+ (aref res i j) (* (aref fm i k) (aref sm k j))))
         )
     )
-
-
-(defun helper(line col) (apply #'+ 0 (mapcar #'* line col) ))
-
-(defun helper2(line matrix x) (if (= -1 x) nil (append (list (helper line (getcol (- (length matrix) x) matrix))) (helper2 line matrix (- x 1))) ))
-
-
-(defun matrixmul(mat1 mat2 x)
-    (if (= x 0) nil (append (list (helper2 (getrow (- (length mat1) x ) mat1) mat2 (length mat2))) (matrixmul mat1 mat2 (- x 1) ) ) )
 )
 
-(defun matmul (mat1 mat2) (matrixmul mat1 mat2 (length mat1) ) )
-
-(print (matmul '((7 4 9) (8 1 5) (8 1 5))  '((7 4 9) (8 1 5) (8 1 5))  ))
+(setf finish (get-universal-time))
+(format t "Calculate Time : ~D sec" (- finish start))
