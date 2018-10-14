@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class MatrixMul {
+public class Step_1 {
 	static int FMROW = 1000, FMCOL = 1000;
 	static int SMROW = 1000, SMCOL = 1000;
 
@@ -40,7 +40,7 @@ public class MatrixMul {
            long endTime = System.currentTimeMillis();
 
            long lTime = endTime - startTime;
-           System.out.println("TIME : " + lTime + "(ms)");
+           System.out.println("TIME : " + lTime / 1000.0 + "(ms)");
 
        } catch (IOException e) {
 
