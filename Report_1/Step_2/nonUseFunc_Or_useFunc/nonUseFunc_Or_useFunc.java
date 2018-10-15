@@ -1,5 +1,4 @@
 
-
 public class NonUseFunc_Or_UseFunc {
 
 	static int useFunc(int n) {
