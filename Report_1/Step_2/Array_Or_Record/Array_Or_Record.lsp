@@ -15,6 +15,6 @@
 ; # (NIL NIL NIL NIL NIL NIL NIL NIL NIL NIL)
 ; # (1 2 3 4 5 6 7 8 9 10)
 
-l Use Record - list
+; Use Record - list
 (write (list 3 4 'a (car '(b . c)) (* 4 -2)))
 ; (3 4 A B -8)
