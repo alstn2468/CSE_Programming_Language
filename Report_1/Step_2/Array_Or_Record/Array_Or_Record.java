@@ -27,6 +27,7 @@ public class Solution {
 		for (int i = 0; i < a.length; i++) {
 			System.out.print(a[i] + " ");
 		}
+        // Use Array : 1 2 3 4 5 6 7 8 9 10
 
 		System.out.println();
 
@@ -37,6 +38,16 @@ public class Solution {
 			record[i].setValue(i + 1, (char)('a' + i));
 			record[i].display();
 		}
+        // useRecord : 1 a
+        // useRecord : 2 b
+        // useRecord : 3 c
+        // useRecord : 4 d
+        // useRecord : 5 e
+        // useRecord : 6 f
+        // useRecord : 7 g
+        // useRecord : 8 h
+        // useRecord : 9 i
+        // useRecord : 10 j
 
 	}
 
