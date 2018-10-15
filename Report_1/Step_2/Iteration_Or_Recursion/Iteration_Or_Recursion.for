@@ -13,12 +13,9 @@ PROGRAM Recursion_Or_Iteration
     Print *, 'Recursion : ', recursion
     ! Iteration : 55
     ! Recursion : 55
-
 END PROGRAM Recursion_Or_Iteration
 
-RECURSIVE FUNCTION recu(N) RESULT(N_recu)
-    IMPLICIT NONE
-
+INTEGER RECURSIVE FUNCTION recu(N) RESULT(N_recu)
     INTEGER, INTENT(IN) :: N
 
     IF (N > 0) THEN
