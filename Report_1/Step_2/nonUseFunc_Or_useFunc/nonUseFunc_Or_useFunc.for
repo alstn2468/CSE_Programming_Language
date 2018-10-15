@@ -22,5 +22,4 @@ PROGRAM NonUseFunc_Or_UseFunc
             B = B + i
         END DO
     END SUBROUTINE
-
 END PROGRAM NonUseFunc_Or_UseFunc

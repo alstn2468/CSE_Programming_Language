@@ -1,0 +1,20 @@
+; Create Array
+(write (setf arr (make-array '(10))))
+(terpri)
+(setf (aref arr 0) 1)
+(setf (aref arr 1) 2)
+(setf (aref arr 2) 3)
+(setf (aref arr 3) 4)
+(setf (aref arr 4) 5)
+(setf (aref arr 5) 6)
+(setf (aref arr 6) 7)
+(setf (aref arr 7) 8)
+(setf (aref arr 8) 9)
+(setf (aref arr 9) 10)
+(write arr)
+; # (NIL NIL NIL NIL NIL NIL NIL NIL NIL NIL)
+; # (1 2 3 4 5 6 7 8 9 10)
+
+l Use Record - list
+(write (list 3 4 'a (car '(b . c)) (* 4 -2)))
+; (3 4 A B -8)
