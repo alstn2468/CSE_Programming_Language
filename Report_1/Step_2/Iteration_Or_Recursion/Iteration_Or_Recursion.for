@@ -12,8 +12,8 @@ PROGRAM Recursion_Or_Iteration
 
     Print *, 'Iteration : ', iteration
     Print *, 'Recursion : ', recursion
-    ! Iteration : 55
-    ! Recursion : 55
+    ! Iteration :           55
+    ! Recursion :    55.0000000   
 END PROGRAM Recursion_Or_Iteration
 
 REAL RECURSIVE FUNCTION recu(N) RESULT(N_recu)
