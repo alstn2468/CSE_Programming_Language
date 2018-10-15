@@ -1,5 +1,6 @@
 PROGRAM Recursion_Or_Iteration
-    INTEGER :: iteration, recursion
+    INTEGER :: iteration
+    REAL :: recursion
 
     iteration = 0
 
@@ -11,18 +12,18 @@ PROGRAM Recursion_Or_Iteration
 
     Print *, 'Iteration : ', iteration
     Print *, 'Recursion : ', recursion
-    ! Iteration : 55
-    ! Recursion : 55
+    ! Iteration :           55
+    ! Recursion :    55.0000000   
 END PROGRAM Recursion_Or_Iteration
 
-INTEGER RECURSIVE FUNCTION recu(N) RESULT(N_recu)
+REAL RECURSIVE FUNCTION recu(N) RESULT(N_recu)
     INTEGER, INTENT(IN) :: N
 
     IF (N > 0) THEN
         N_recu = N + recu(N - 1)
 
     ELSE
-        N_recu = 1
+        N_recu = 0
 
     END IF
 END FUNCTION recu
