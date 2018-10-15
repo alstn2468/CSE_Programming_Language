@@ -1,7 +1,7 @@
 ; Recursion
 (defun power_recu (x y)
             (if (= y 0) 1
-                (* x (power x (- y 1)))))
+                (* x (power_recu x (- y 1)))))
 
 (print (power_recu 3 4))
 ; 81
