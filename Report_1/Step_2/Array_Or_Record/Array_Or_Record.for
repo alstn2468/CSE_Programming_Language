@@ -1,9 +1,11 @@
 PROGRAM Array_Or_Record
-    INTEGER :: arr(10)
     TYPE record
         INTEGER :: a
         CHARACTER :: b
     END TYPE record
+
+    INTEGER :: arr(10)
+    TYPE(record) :: r
 
     ! Assign to Array
     DO i = 1, 10
@@ -14,25 +16,24 @@ PROGRAM Array_Or_Record
     DO i = 1, 10
         Print *, arr(i)
     END DO
-    ! 1
-    ! 2
-    ! 3
-    ! 4
-    ! 5
-    ! 6
-    ! 7
-    ! 8
-    ! 9
-    ! 10
+    !      1
+    !      2
+    !      3
+    !      4
+    !      5
+    !      6
+    !      7
+    !      8
+    !      9
+    !     10
 
     ! Assing to Record
-    TYPE(record) r
     r = record(1, 'a')
 
     ! Print Record Data
     Print *, 'r%a : ', r%a
     Print *, 'r%b : ', r%b
-    ! 1
-    ! a
+    ! r%a :            1
+    ! r%b : a
 
 END PROGRAM Array_Or_Record
