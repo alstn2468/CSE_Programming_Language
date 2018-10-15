@@ -30,9 +30,9 @@ PROGRAM Array_Or_Record
     r = record(1, 'a')
 
     ! Print Record Data
-    Print *, 'r%a : ' + r%a
-    Print *, 'r%b : ' + r%b
+    Print *, 'r%a : ', r%a
+    Print *, 'r%b : ', r%b
     ! 1
     ! a
 
-END PROGRAM
+END PROGRAM Array_Or_Record
