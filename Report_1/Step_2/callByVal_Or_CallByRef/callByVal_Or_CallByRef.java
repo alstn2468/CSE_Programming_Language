@@ -8,7 +8,7 @@ class Person {
 	}
 }
 
-public class Solution {
+public class CallByVal_Or_CallByRef {
 
 	public static void callByValue(Person p) {
 		p = new Person("Kevin");

@@ -13,7 +13,7 @@ class useRecord {
 	}
 }
 
-public class Solution {
+public class Array_Or_Record {
 
 	public static void main(String[] args) {
 		int[] a = new int[10];
